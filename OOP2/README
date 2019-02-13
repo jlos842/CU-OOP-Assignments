@@ -1,0 +1,15 @@
+Josef Los
+2/15/19
+Object Oriented Design Homework 2
+Dr. Montgomery
+
+Differences between HW1 and HW2
+------------------------------
+
+This time around I decided to program the shapes example in C++. First, I made the base class Shape an abstract class. In python I forgot to make Shape abstract so the user could instantiate shape. This doesn't make much sense in the context of the program because "shape" doesn't have a specific amount of sides. This could lead to issues down the line if we were to expand upon the program.
+
+The next thing I changed between homework 1 and homework 2 is that I delegated the task of displaying the shapes to a seperate class. So each shape subclass HAS-A Display object. This is nice because each shape doesn't have to worry about implementing it's own display function as it has an object that does it for them. I can now see why it's better to favor delegation over inheritance.
+
+Lastly, I added access specifiers to ALL of the data in this program. This helps adhere to the principle of encapsulation and makes my program much more safe in the long run.
+
+Those three things (along with a few minor changes to how the code is stuctured) are the changes I made between homework 1 and homework 2
