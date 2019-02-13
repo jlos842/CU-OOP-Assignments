@@ -15,13 +15,12 @@ int Shape::getSides()
 	return sides;
 }
 
-bool Shape::operator < (const Shape& other) const
+bool Shape::operator < (const Shape& other) const //Specifies how to compare objects. Sort by number of sides
 {
 	return (sides < other.sides);
 }
 
 Circle::Circle(std::string n)
-//: name(n), sides(0)//, displayMethod(Display())
 {
 	name = n;
 	sides = 0;
@@ -29,7 +28,6 @@ Circle::Circle(std::string n)
 }
 
 Triangle::Triangle(std::string n)
-//: name(n), sides(3)//, displayMethod(Display())
 {
 	name = n;
 	sides = 3;
@@ -37,7 +35,6 @@ Triangle::Triangle(std::string n)
 }
 
 Square::Square(std::string n)
-//: name(n), sides(4), displayMethod(Display())
 {
 	name = n;
 	sides = 4;
