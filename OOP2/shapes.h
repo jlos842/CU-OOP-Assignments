@@ -12,11 +12,11 @@ class Shape
 		std::string getName();
 		int getSides();
 		virtual void display() = 0; //Makes this class abstract. This method MUST be overwritten
-		bool operator < (const Shape& other) const;
+		bool operator < (const Shape& other) const; 
 	protected:
 		std::string name;
 		int sides;
-		Display displayMethod;
+		Display displayMethod; //Each shape now HAS-A Display object. This is delegation
 };
 
 class Circle : public Shape
