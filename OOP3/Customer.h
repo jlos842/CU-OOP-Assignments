@@ -7,18 +7,20 @@ Header file for the Customer class
 #ifndef CUSTOMER_H
 #define CUSTOMER_H
 
+#include <string>
+
 class Customer
 {
-	Public:
-		Customer(std::string name, int type);
-		std::string getName();
-		int getCustomerType();	
+	public:		
+		Customer(std::string name, std::string type);
+		std::string getCustomerName();
+		std::string getCustomerType();	
 		//void rent();
-	Private:	
+	private:	
 		std::string customerName;
-		int customerType;
+		std::string customerType;
 		//Tool rentals[3];
 		//rentPattern rentMethod;	
-}
+};
 
 #endif
