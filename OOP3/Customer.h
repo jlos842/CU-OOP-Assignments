@@ -15,11 +15,12 @@ class Customer
 		Customer(std::string name, std::string type);
 		std::string getCustomerName();
 		std::string getCustomerType();	
+		int getNumberOfTools();
 		//void rent();
 	private:	
+		int numTools;
 		std::string customerName;
 		std::string customerType;
-		//Tool rentals[3];
 		//rentPattern rentMethod;	
 };
 
