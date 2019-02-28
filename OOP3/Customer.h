@@ -7,21 +7,33 @@ Header file for the Customer class
 #ifndef CUSTOMER_H
 #define CUSTOMER_H
 
+#include "RentPattern.h"
 #include <string>
 
 class Customer
 {
 	public:		
-		Customer(std::string name, std::string type);
+		typedef enum
+		{
+			CASUAL = 0,
+			BUSINESS,
+			REGULAR	
+		} CustomerTypes;
+		Customer(std::string name, int type);
+		~Customer();
 		std::string getCustomerName();
-		std::string getCustomerType();	
+		int getCustomerType();	
 		int getNumberOfTools();
-		//void rent();
+		void rent();
+
+		//test
+		RentPattern* getRentPattern();
+
 	private:	
 		int numTools;
 		std::string customerName;
-		std::string customerType;
-		//rentPattern rentMethod;	
+		int customerType;
+		RentPattern *rentMethod;	
 };
 
 #endif
