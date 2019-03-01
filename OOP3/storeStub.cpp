@@ -12,5 +12,11 @@ int main()
 	std::cout << i << " --- " << j << std::endl;
 	toolstore.printTools();
 
+	std::cout << "\n\n";
+
+	toolstore.storeShuffle();
+
+	toolstore.printTools();
+
 	return 0;
 }

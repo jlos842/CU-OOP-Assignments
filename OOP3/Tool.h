@@ -13,8 +13,7 @@ the simulation
 
 struct Tool {
 	std::string toolName, toolCategory;
-	bool rentStatus;
-	int price;
+	int rentDaysLeft, price;
 	Customer *currentOwner;
 };
 

@@ -17,6 +17,7 @@ class Store
 		int getMoneyEarned();
 		int getToolsAvailable();	
 		void printTools();
+		void storeShuffle(); 
 	private:
 		int moneyEarned, toolsAvailable;
 		Tool inventory[20];
