@@ -17,12 +17,14 @@ class RentPattern
 		int minTools, maxTools, minNights, maxNights;
 };
 
+/*
 class CasualPattern : public RentPattern
 {
 	public:
 		void rentTools();
 		CasualPattern();
 };
+*/
 
 class BusinessPattern : public RentPattern
 {
@@ -31,12 +33,14 @@ class BusinessPattern : public RentPattern
 		BusinessPattern();
 };
 
+/*
 class RegularPattern : public RentPattern
 {
 	public:
 		void rentTools();
 		RegularPattern();
 };
+*/
 
 
 #endif

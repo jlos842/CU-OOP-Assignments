@@ -10,6 +10,7 @@ Definitions file for the rentPattern class and it's subclasses
 #include <ctime>
 
 
+/*
 CasualPattern::CasualPattern()
 {
 	minTools = 1;
@@ -27,6 +28,7 @@ void CasualPattern::rentTools()
 	int r2 = rand();
 	std::cout << "RENTING: " << (r1 % 2) + 1 << " tools for " << (r2 % 2) + 1 << " nights." << std::endl; 
 }
+*/
 
 BusinessPattern::BusinessPattern()
 {
@@ -38,9 +40,10 @@ BusinessPattern::BusinessPattern()
 
 void BusinessPattern::rentTools()
 {
-	std::cout << "RENTING: " << maxTools << " tools for " << maxNights << " nights. " << std::endl;
+	
 }
 
+/*
 RegularPattern::RegularPattern()
 {
 	minTools = 1;
@@ -56,3 +59,4 @@ void RegularPattern::rentTools()
 	int r2 = rand();
 	std::cout << "RENTING: " << (r1 % 3) + 1 << " tools for " << (r2 % 3) + 3 << " nights." << std::endl; 
 }
+*/
