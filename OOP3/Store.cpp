@@ -4,33 +4,36 @@ Josef Los
 Function definitions for the Tool store class
 */
 
+#include "Rental.h"
 #include "Store.h"
 #include "Tool.h"
 #include <iostream>
 #include <string>
 #include <algorithm>
 #include <ctime>
+#include <vector>
+#include <iterator>
 
-	Tool t1 = {"Paint Tool 1", "Painting", 0, 10, NULL};
-	Tool t2 = {"Paint Tool 2", "Painting", 0, 10, NULL};
-	Tool t3 = {"Paint Tool 3", "Painting", 0, 10, NULL};
-	Tool t4 = {"Paint Tool 4", "Painting", 0, 10, NULL};
-	Tool t5 = {"Concrete Tool 1", "Concrete", 0, 20, NULL};
-	Tool t6 = {"Concrete Tool 2", "Concrete", 0, 20, NULL};
-	Tool t7 = {"Concrete Tool 3", "Concrete", 0, 20, NULL};
-	Tool t8 = {"Concrete Tool 4", "Concrete", 0, 20, NULL};
-	Tool t9 = {"Plumbing Tool 1", "Plumbing", 0, 25, NULL};
-	Tool t10 = {"Plumbing Tool 2", "Plumbing", 0, 25, NULL};
-	Tool t11 = {"Plumbing Tool 3", "Plumbing", 0, 25, NULL};
-	Tool t12 = {"Plumbing Tool 4", "Plumbing", 0, 25, NULL};
-	Tool t13 = {"Woodwork Tool 1", "Woodwork", 0, 15, NULL};
-	Tool t14 = {"Woodwork Tool 2", "Woodwork", 0, 15, NULL};
-	Tool t15 = {"Woodwork Tool 3", "Woodwork", 0, 15, NULL};
-	Tool t16 = {"Woodwork Tool 4", "Woodwork", 0, 15, NULL};
-	Tool t17 = {"Yardwork Tool 1", "Yardwork", 0, 5, NULL};
-	Tool t18 = {"Yardwork Tool 1", "Yardwork", 0, 5, NULL};
-	Tool t19 = {"Yardwork Tool 1", "Yardwork", 0, 5, NULL};
-	Tool t20 = {"Yardwork Tool 1", "Yardwork", 0, 5, NULL};
+	Tool t1 = {"Paint Tool 1", "Painting", 0, 10};
+	Tool t2 = {"Paint Tool 2", "Painting", 0, 10};
+	Tool t3 = {"Paint Tool 3", "Painting", 0, 10};
+	Tool t4 = {"Paint Tool 4", "Painting", 0, 10};
+	Tool t5 = {"Concrete Tool 1", "Concrete", 0, 20};
+	Tool t6 = {"Concrete Tool 2", "Concrete", 0, 20};
+	Tool t7 = {"Concrete Tool 3", "Concrete", 0, 20};
+	Tool t8 = {"Concrete Tool 4", "Concrete", 0, 20};
+	Tool t9 = {"Plumbing Tool 1", "Plumbing", 0, 25};
+	Tool t10 = {"Plumbing Tool 2", "Plumbing", 0, 25};
+	Tool t11 = {"Plumbing Tool 3", "Plumbing", 0, 25};
+	Tool t12 = {"Plumbing Tool 4", "Plumbing", 0, 25};
+	Tool t13 = {"Woodwork Tool 1", "Woodwork", 0, 15};
+	Tool t14 = {"Woodwork Tool 2", "Woodwork", 0, 15};
+	Tool t15 = {"Woodwork Tool 3", "Woodwork", 0, 15};
+	Tool t16 = {"Woodwork Tool 4", "Woodwork", 0, 15};
+	Tool t17 = {"Yardwork Tool 1", "Yardwork", 0, 5};
+	Tool t18 = {"Yardwork Tool 1", "Yardwork", 0, 5};
+	Tool t19 = {"Yardwork Tool 1", "Yardwork", 0, 5};
+	Tool t20 = {"Yardwork Tool 1", "Yardwork", 0, 5};
 
 Tool toolarray[20] = {t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15, t16, t17, t18, t19, t20};
 
@@ -52,4 +55,51 @@ void Store::storeShuffle()
 {
 	srand(time(0));
 	std::random_shuffle(&inventory[0], &inventory[19]);
+}
+
+void Store::rentOut(int numDays, int numTools, std::string customerName)
+{
+	Rental r;
+	r.rentLength = numDays;
+	r.customerName = customerName;
+	r.activeRent = true;
+	r.rentDay = 13; //TODO Set up a day counter global
+	r.activeRent = true;
+
+	if(toolsAvailable >= numTools)
+	{
+		int toolsLeft = numTools;
+		int i = 0;
+		r.rentPrice = 0;
+		while(toolsLeft > 0) 
+		{					
+			if(inventory[i].rentDaysLeft == 0)
+			{
+				r.toolsRented.push_back(inventory[i].toolName);	
+				r.rentPrice += inventory[i].price;
+
+				inventory[i].rentDaysLeft = numDays;
+				numTools--;
+			}
+			i++;
+			toolsLeft--;
+		}
+	}
+
+	std::cout << r.rentPrice << std::endl;
+	rentList.push_back(r);
+}
+
+void Store::printRentals()
+{
+	/*
+	for(std::vector<Rental>::iterator iter = rentList.begin(); iter != rentList.end(); ++iter)
+	{
+		std::cout << *iter.rentLength << std::endl;	
+	}
+	*/
+	for(int i=0; i<3; i++)
+	{
+		std::cout << rentList.front().toolsRented[i] << std::endl;
+	}
 }

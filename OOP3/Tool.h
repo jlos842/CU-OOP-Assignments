@@ -14,7 +14,6 @@ the simulation
 struct Tool {
 	std::string toolName, toolCategory;
 	int rentDaysLeft, price;
-	Customer *currentOwner;
 };
 
 #endif
