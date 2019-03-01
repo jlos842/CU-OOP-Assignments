@@ -25,10 +25,6 @@ class Customer
 		int getCustomerType();	
 		int getNumberOfTools();
 		void rent();
-
-		//test
-		RentPattern* getRentPattern();
-
 	private:	
 		int numTools;
 		std::string customerName;

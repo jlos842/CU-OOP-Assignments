@@ -13,9 +13,13 @@ as a vector of Rental objects.
 class Store
 {
 	public:
+		Store();
+		int getMoneyEarned();
+		int getToolsAvailable();	
+		void printTools();
 	private:
-		int moneyEarned;
-
+		int moneyEarned, toolsAvailable;
+		Tool inventory[20];
 };
 
 #endif

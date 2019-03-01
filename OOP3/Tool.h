@@ -8,11 +8,14 @@ the simulation
 #ifndef TOOLS_H
 #define TOOLS_H
 
+#include "Customer.h"
 #include <string>
 
 struct Tool {
 	std::string toolName, toolCategory;
 	bool rentStatus;
+	int price;
+	Customer *currentOwner;
 };
 
 #endif
