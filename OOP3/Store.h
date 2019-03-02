@@ -24,7 +24,8 @@ class Store
 		void printTools();
 		void storeShuffle(); 
 		void rentOut(int numDays, int numTools, std::string customerName);
-		void printRentals();
+		void printActiveRentals();
+		void printCompletedRentals();
 	private:
 		int moneyEarned, toolsAvailable;
 		Tool inventory[20];

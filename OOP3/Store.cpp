@@ -80,26 +80,64 @@ void Store::rentOut(int numDays, int numTools, std::string customerName)
 
 				inventory[i].rentDaysLeft = numDays;
 				numTools--;
+				toolsLeft--;
 			}
 			i++;
-			toolsLeft--;
 		}
 	}
 
-	std::cout << r.rentPrice << std::endl;
+	moneyEarned += r.rentPrice;
+
 	rentList.push_back(r);
 }
 
-void Store::printRentals()
+void Store::printActiveRentals()
 {
-	/*
-	for(std::vector<Rental>::iterator iter = rentList.begin(); iter != rentList.end(); ++iter)
+	rentList[3].activeRent = false;
+	rentList[4].activeRent = false;
+
+	std::string rentalTools;
+	std::string formatLine = "---------------------------------------------------";
+	std::cout << "\nACTIVE RENTALS\n\n" <<formatLine << std::endl;
+	for(int i=0; i < rentList.size(); i++)
 	{
-		std::cout << *iter.rentLength << std::endl;	
+		if(rentList[i].activeRent)
+		{
+			rentalTools = "";
+			for(int j=0; j < rentList[i].toolsRented.size(); j++)
+			{
+				rentalTools.append(rentList[i].toolsRented[j]);
+				if((j+1) != rentList[i].toolsRented.size())
+				{
+					rentalTools.append(", ");
+				}
+			}
+			std::cout << "DAY "  << rentList[i].rentDay << "\nCustomer: " << rentList[i].customerName << "\nTool(s): " << rentalTools << "\nLength: " << rentList[i].rentLength << " days\nProfit: " << rentList[i].rentPrice << "$\n" << formatLine << std::endl;	
+		}
 	}
-	*/
-	for(int i=0; i<3; i++)
+
+}
+
+void Store::printCompletedRentals()
+{
+	std::string rentalTools;
+	std::string formatLine = "---------------------------------------------------";
+	std::cout << "\nCOMPLETED RENTALS\n\n" <<formatLine << std::endl;
+	for(int i=0; i < rentList.size(); i++)
 	{
-		std::cout << rentList.front().toolsRented[i] << std::endl;
+		if(!rentList[i].activeRent)
+		{
+			rentalTools = "";
+			for(int j=0; j < rentList[i].toolsRented.size(); j++)
+			{
+				rentalTools.append(rentList[i].toolsRented[j]);
+				if((j+1) != rentList[i].toolsRented.size())
+				{
+					rentalTools.append(", ");
+				}
+			}
+			std::cout << "DAY "  << rentList[i].rentDay << "\nCustomer: " << rentList[i].customerName << "\nTool(s): " << rentalTools << "\nLength: " << rentList[i].rentLength << " days\nProfit: " << rentList[i].rentPrice << "$\n" << formatLine << std::endl;	
+		}
 	}
+
 }

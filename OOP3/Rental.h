@@ -1,6 +1,6 @@
 /*
 Josef Los
-Header file for the rental struct?
+Header file for the rental struct
 */
 
 #ifndef RENTAL_H
