@@ -16,5 +16,8 @@ int main()
 	toolstore.printActiveRentals();
 	toolstore.printCompletedRentals();
 
+	toolstore.getMoneyEarned();
+	toolstore.printTools();
+
 	return 0;
 }

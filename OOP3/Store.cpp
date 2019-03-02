@@ -47,7 +47,10 @@ void Store::printTools()
 {
 	for(int i = 0; i < 20; i++)
 	{
-		std::cout << inventory[i].toolName << std::endl;			
+		if(inventory[i].rentDaysLeft == 0)
+		{
+			std::cout << inventory[i].toolName << std::endl;			
+		}
 	}
 }
 
@@ -93,9 +96,6 @@ void Store::rentOut(int numDays, int numTools, std::string customerName)
 
 void Store::printActiveRentals()
 {
-	rentList[3].activeRent = false;
-	rentList[4].activeRent = false;
-
 	std::string rentalTools;
 	std::string formatLine = "---------------------------------------------------";
 	std::cout << "\nACTIVE RENTALS\n\n" <<formatLine << std::endl;
