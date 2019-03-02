@@ -7,7 +7,6 @@ Function definitions for the Customer class
 #include "Customer.h"
 #include "RentPattern.h"
 #include <string>
-#include <algorithm>
 
 Customer::Customer(std::string name, int type)
 {
@@ -36,9 +35,8 @@ Customer::~Customer()
 std::string Customer::getCustomerName() {return customerName;}
 int Customer::getCustomerType() {return customerType;}
 int Customer::getNumberOfTools() {return numTools;}
-RentPattern* Customer::getRentPattern() {return rentMethod;}
 
-void Customer::rent()
+void Customer::rent(Store &toolstore)
 {
-	rentMethod->rentTools();
+	rentMethod->rentTools(toolstore);
 }

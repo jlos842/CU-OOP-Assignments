@@ -13,7 +13,7 @@ as a vector of Rental objects.
 #include <string>
 #include <vector>
 
-struct Rental;
+struct Rental; //Forward declaration
 
 class Store
 {

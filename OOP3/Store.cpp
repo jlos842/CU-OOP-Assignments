@@ -4,15 +4,14 @@ Josef Los
 Function definitions for the Tool store class
 */
 
-#include "Rental.h"
 #include "Store.h"
+#include "Rental.h"
 #include "Tool.h"
 #include <iostream>
 #include <string>
 #include <algorithm>
 #include <ctime>
 #include <vector>
-#include <iterator>
 
 	Tool t1 = {"Paint Tool 1", "Painting", 0, 10};
 	Tool t2 = {"Paint Tool 2", "Painting", 0, 10};

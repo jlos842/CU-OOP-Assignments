@@ -7,8 +7,10 @@ Header file for the Customer class
 #ifndef CUSTOMER_H
 #define CUSTOMER_H
 
-#include "RentPattern.h"
 #include <string>
+
+class Store; //FORWARD DECLARATIONS
+class RentPattern;
 
 class Customer
 {
@@ -24,7 +26,7 @@ class Customer
 		std::string getCustomerName();
 		int getCustomerType();	
 		int getNumberOfTools();
-		void rent();
+		void rent(Store &toolstore);
 	private:	
 		int numTools;
 		std::string customerName;
