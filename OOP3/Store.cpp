@@ -61,6 +61,8 @@ void Store::storeShuffle()
 
 void Store::rentOut(int numDays, int numTools, std::string customerName)
 {
+	toolsAvailable -= numTools; //Subtract from the number of tools available
+
 	Rental r;
 	r.rentLength = numDays;
 	r.customerName = customerName;

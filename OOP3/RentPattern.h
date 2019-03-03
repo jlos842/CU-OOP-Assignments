@@ -8,6 +8,8 @@ various methods used by Customers to rent tools
 #ifndef RENTPATTERN_H
 #define RENTPATTERN_H
 
+#include <string>
+
 class Store; //Forward Declaration
 
 class RentPattern
@@ -15,14 +17,15 @@ class RentPattern
 	public:
 		virtual void rentTools(Store &toolstore) {};	
 	protected:
-		int minTools, maxTools, minNights, maxNights;
+		std::string customerName;	
+		int *numToolsPointer;
 };
 
 class CasualPattern : public RentPattern
 {
 	public:
 		void rentTools(Store &toolstore);
-		CasualPattern();
+		CasualPattern(std::string name, int *numTools);
 };
 
 
@@ -30,14 +33,14 @@ class BusinessPattern : public RentPattern
 {
 	public:
 		void rentTools(Store &toolstore);
-		BusinessPattern();
+		BusinessPattern(std::string name, int *numTools);
 };
 
 class RegularPattern : public RentPattern
 {
 	public:
 		void rentTools(Store &toolstore);
-		RegularPattern();
+		RegularPattern(std::string name, int *numTools);
 };
 
 

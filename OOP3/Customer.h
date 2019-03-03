@@ -29,6 +29,7 @@ class Customer
 		void rent(Store &toolstore);
 	private:	
 		int numTools;
+		int *numToolsPointer;
 		std::string customerName;
 		int customerType;
 		RentPattern *rentMethod;	

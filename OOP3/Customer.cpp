@@ -13,16 +13,17 @@ Customer::Customer(std::string name, int type)
 	customerName = name;
 	customerType = type;
 	numTools = 0;
+	numToolsPointer = &numTools;
 	switch(type)
 	{
 		case 0:
-			rentMethod = new CasualPattern();
+			rentMethod = new CasualPattern(name, numToolsPointer);
 			break;
 		case 1:
-			rentMethod = new BusinessPattern();
+			rentMethod = new BusinessPattern(name, numToolsPointer);
 			break;
 		case 2:
-			rentMethod = new RegularPattern();
+			rentMethod = new RegularPattern(name, numToolsPointer);
 			break;
 	};
 }
