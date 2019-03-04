@@ -14,7 +14,7 @@ struct Rental
 	bool activeRent;
 	std::string customerName;
 	std::vector<std::string> toolsRented;
-	int rentDay, rentLength, rentPrice;
+	int rentDay, rentLength, rentPrice, numToolsRented;
 };
 
 #endif

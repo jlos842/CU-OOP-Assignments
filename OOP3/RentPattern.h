@@ -16,9 +16,11 @@ class RentPattern
 {
 	public:
 		virtual void rentTools(Store &toolstore) {};	
+		int getMinToolsRented();
 	protected:
 		std::string customerName;	
 		int *numToolsPointer;
+		int minToolsRented;
 };
 
 class CasualPattern : public RentPattern

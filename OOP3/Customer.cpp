@@ -36,6 +36,12 @@ Customer::~Customer()
 std::string Customer::getCustomerName() {return customerName;}
 int Customer::getCustomerType() {return customerType;}
 int Customer::getNumberOfTools() {return numTools;}
+int Customer::getMinToolsRented() {return rentMethod->getMinToolsRented();}
+
+void Customer::decrementNumTools(int numToolsReturned)
+{
+	numTools -= numToolsReturned;
+}
 
 void Customer::rent(Store &toolstore)
 {

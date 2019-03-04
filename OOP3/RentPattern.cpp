@@ -11,10 +11,13 @@ Definitions file for the rentPattern class and it's subclasses
 #include <ctime>
 
 
+int RentPattern::getMinToolsRented(){return minToolsRented;}
+
 CasualPattern::CasualPattern(std::string name, int *numTools)
 {
 	numToolsPointer = numTools;
 	customerName = name;	
+	minToolsRented = 1;
 }
 
 void CasualPattern::rentTools(Store &toolstore)
@@ -36,24 +39,39 @@ void CasualPattern::rentTools(Store &toolstore)
 	int numdays = (r2 % 2) + 1;
 	*numToolsPointer += numtools;
 	toolstore.rentOut(numdays, numtools, customerName);
+	/*
+	if(numtools != 0)
+	{	
+		toolstore.rentOut(numdays, numtools, customerName);
+	}
+	*/
 }
 
 BusinessPattern::BusinessPattern(std::string name, int *numTools)
 {
 	numToolsPointer = numTools;
 	customerName = name;	
+	minToolsRented = 3;
 }
 
 void BusinessPattern::rentTools(Store &toolstore)
 {
-	*numToolsPointer += 3;
-	toolstore.rentOut(7, 3, customerName);
+	if(*numToolsPointer == 3)
+	{
+		; //pass
+	}
+	else
+	{
+		*numToolsPointer += 3;
+		toolstore.rentOut(7, 3, customerName);		
+	}
 }
 
 RegularPattern::RegularPattern(std::string name, int *numTools)
 {
 	numToolsPointer = numTools;
 	customerName = name;	
+	minToolsRented = 1;
 }
 
 void RegularPattern::rentTools(Store &toolstore)
@@ -65,5 +83,8 @@ void RegularPattern::rentTools(Store &toolstore)
 	int numtools = (r1 % (3 - (*numToolsPointer))) + 1; 	
 	int numdays = (r2 % 3) + 3;
 	*numToolsPointer += numtools;
-	toolstore.rentOut(numdays, numtools, customerName);
+	if(numtools != 0)
+	{	
+		toolstore.rentOut(numdays, numtools, customerName);
+	}
 }

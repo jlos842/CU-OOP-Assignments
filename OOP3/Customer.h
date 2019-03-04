@@ -12,21 +12,25 @@ Header file for the Customer class
 class Store; //FORWARD DECLARATIONS
 class RentPattern;
 
+typedef enum
+{
+	CASUAL = 0,
+	BUSINESS,
+	REGULAR	
+} CustomerTypes;
+
+
 class Customer
 {
 	public:		
-		typedef enum
-		{
-			CASUAL = 0,
-			BUSINESS,
-			REGULAR	
-		} CustomerTypes;
 		Customer(std::string name, int type);
 		~Customer();
 		std::string getCustomerName();
 		int getCustomerType();	
 		int getNumberOfTools();
 		void rent(Store &toolstore);
+		void decrementNumTools(int numToolsReturned);
+		int getMinToolsRented();
 	private:	
 		int numTools;
 		int *numToolsPointer;

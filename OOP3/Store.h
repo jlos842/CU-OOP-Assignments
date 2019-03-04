@@ -26,6 +26,9 @@ class Store
 		void rentOut(int numDays, int numTools, std::string customerName);
 		void printActiveRentals();
 		void printCompletedRentals();
+		void decrementRentDaysLeft();
+		int getRentListSize();
+		Rental* getRental(int position);
 	private:
 		int moneyEarned, toolsAvailable;
 		Tool inventory[20];

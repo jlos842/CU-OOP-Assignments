@@ -7,6 +7,7 @@ Function definitions for the Tool store class
 #include "Store.h"
 #include "Rental.h"
 #include "Tool.h"
+#include "Simulation.h"
 #include <iostream>
 #include <string>
 #include <algorithm>
@@ -42,6 +43,8 @@ Store::Store() : moneyEarned(0), toolsAvailable(20), inventory(toolarray)
 
 int Store::getMoneyEarned() {return moneyEarned;}
 int Store::getToolsAvailable() {return toolsAvailable;}
+int Store::getRentListSize() {return rentList.size();}
+Rental* Store::getRental(int position) {return &rentList[position];}
 void Store::printTools()
 {
 	for(int i = 0; i < 20; i++)
@@ -59,16 +62,27 @@ void Store::storeShuffle()
 	std::random_shuffle(&inventory[0], &inventory[19]);
 }
 
+void Store::decrementRentDaysLeft()
+{
+	for(int i=0; i<20; i++)
+	{
+		inventory[i].rentDaysLeft--;	
+	}
+}
+
 void Store::rentOut(int numDays, int numTools, std::string customerName)
 {
 	toolsAvailable -= numTools; //Subtract from the number of tools available
+
+	std::cout << customerName << " Renting " << numTools << " for " << numDays << std::endl;
 
 	Rental r;
 	r.rentLength = numDays;
 	r.customerName = customerName;
 	r.activeRent = true;
-	r.rentDay = 13; //TODO Set up a day counter global
+	r.rentDay = CURRENT_DAY;  
 	r.activeRent = true;
+	r.numToolsRented = numTools;
 
 	if(toolsAvailable >= numTools)
 	{
@@ -77,7 +91,7 @@ void Store::rentOut(int numDays, int numTools, std::string customerName)
 		r.rentPrice = 0;
 		while(toolsLeft > 0) 
 		{					
-			if(inventory[i].rentDaysLeft == 0)
+			if(inventory[i].rentDaysLeft <= 0)
 			{
 				r.toolsRented.push_back(inventory[i].toolName);	
 				r.rentPrice += inventory[i].price;
