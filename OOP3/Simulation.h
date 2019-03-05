@@ -18,10 +18,10 @@ class Simulation
 {
 	public:
 		Simulation();
-		void runSimulation(int numDays); 
-		void startDay(); //Return tools and decrement day rentalDaysLeft counters
-		void openStore(); //Gets random selection of customers to come in an rent tools
-		void createReport(); //Create the final report
+		//void runSimulation(int numDays); 
+		//void startDay(); //Return tools and decrement day rentalDaysLeft counters
+		//void openStore(); //Gets random selection of customers to come in an rent tools
+		//void createReport(); //Create the final report
 	private:
 		Store simulatedStore;
 		Customer customerList[10];

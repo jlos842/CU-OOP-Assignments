@@ -36,15 +36,15 @@ void CasualPattern::rentTools(Store &toolstore)
 		numtools = (r1 % (2 - (*numToolsPointer))) + 1; 		
 	}
 
+	if(toolstore.getToolsAvailable() < numtools)
+	{
+		return;
+	}
+	
+
 	int numdays = (r2 % 2) + 1;
 	*numToolsPointer += numtools;
-	toolstore.rentOut(numdays, numtools, customerName);
-	/*
-	if(numtools != 0)
-	{	
-		toolstore.rentOut(numdays, numtools, customerName);
-	}
-	*/
+	toolstore.rentOut(numdays, numtools, customerName);	
 }
 
 BusinessPattern::BusinessPattern(std::string name, int *numTools)
@@ -62,6 +62,10 @@ void BusinessPattern::rentTools(Store &toolstore)
 	}
 	else
 	{
+		if(toolstore.getToolsAvailable() < 3)
+		{
+			return;
+		}
 		*numToolsPointer += 3;
 		toolstore.rentOut(7, 3, customerName);		
 	}
@@ -82,9 +86,13 @@ void RegularPattern::rentTools(Store &toolstore)
 
 	int numtools = (r1 % (3 - (*numToolsPointer))) + 1; 	
 	int numdays = (r2 % 3) + 3;
-	*numToolsPointer += numtools;
-	if(numtools != 0)
+	if(toolstore.getToolsAvailable() < numtools)
 	{	
+		return;
+	}
+	if(numtools != 0)
+	{		
+		*numToolsPointer += numtools;
 		toolstore.rentOut(numdays, numtools, customerName);
 	}
 }

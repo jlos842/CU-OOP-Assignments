@@ -34,6 +34,7 @@ Simulation::Simulation() : simulatedStore(), customerList(customers)
 	CURRENT_DAY = 0;
 }
 
+/*
 void Simulation::startDay()
 {
 	CURRENT_DAY++;
@@ -104,4 +105,6 @@ void Simulation::runSimulation(int numDays)
 		openStore();	
 	}
 	createReport();
+
 }
+*/

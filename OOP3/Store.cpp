@@ -31,9 +31,9 @@ Function definitions for the Tool store class
 	Tool t15 = {"Woodwork Tool 3", "Woodwork", 0, 15};
 	Tool t16 = {"Woodwork Tool 4", "Woodwork", 0, 15};
 	Tool t17 = {"Yardwork Tool 1", "Yardwork", 0, 5};
-	Tool t18 = {"Yardwork Tool 1", "Yardwork", 0, 5};
-	Tool t19 = {"Yardwork Tool 1", "Yardwork", 0, 5};
-	Tool t20 = {"Yardwork Tool 1", "Yardwork", 0, 5};
+	Tool t18 = {"Yardwork Tool 2", "Yardwork", 0, 5};
+	Tool t19 = {"Yardwork Tool 3", "Yardwork", 0, 5};
+	Tool t20 = {"Yardwork Tool 4", "Yardwork", 0, 5};
 
 Tool toolarray[20] = {t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15, t16, t17, t18, t19, t20};
 
@@ -51,7 +51,11 @@ void Store::printTools()
 	{
 		if(inventory[i].rentDaysLeft == 0)
 		{
-			std::cout << inventory[i].toolName << std::endl;			
+			std::cout << inventory[i].toolName << " is in the store"  << std::endl;			
+		}
+		else
+		{
+			std::cout << inventory[i].toolName << " has been rented. It'll be returned in " << inventory[i].rentDaysLeft << " day(s)." << std::endl; 
 		}
 	}
 }
@@ -66,32 +70,41 @@ void Store::decrementRentDaysLeft()
 {
 	for(int i=0; i<20; i++)
 	{
-		inventory[i].rentDaysLeft--;	
+		if(inventory[i].rentDaysLeft > 0)
+		{	
+			inventory[i].rentDaysLeft--;	
+			if(inventory[i].rentDaysLeft == 0) 
+			{
+				toolsAvailable++;
+			}
+		}
+			
+	}
+	for(int i=0; i < rentList.size(); i++)
+	{
+		if(rentList[i].rentDay + rentList[i].rentLength == CURRENT_DAY)
+		{
+			rentList[i].activeRent = false;
+
+		}
 	}
 }
 
 void Store::rentOut(int numDays, int numTools, std::string customerName)
 {
-	toolsAvailable -= numTools; //Subtract from the number of tools available
-
-	std::cout << customerName << " Renting " << numTools << " for " << numDays << std::endl;
-
-	Rental r;
-	r.rentLength = numDays;
-	r.customerName = customerName;
-	r.activeRent = true;
-	r.rentDay = CURRENT_DAY;  
-	r.activeRent = true;
-	r.numToolsRented = numTools;
-
+	std::cout << customerName << " attempting to rent " << numTools << " tools for " << numDays << " day(s)."  << std::endl;
+	
+	std::cout << "tools available to rent: " << toolsAvailable << std::endl;
 	if(toolsAvailable >= numTools)
 	{
+		toolsAvailable -= numTools;
+		Rental r;
 		int toolsLeft = numTools;
 		int i = 0;
 		r.rentPrice = 0;
 		while(toolsLeft > 0) 
 		{					
-			if(inventory[i].rentDaysLeft <= 0)
+			if(inventory[i].rentDaysLeft == 0)
 			{
 				r.toolsRented.push_back(inventory[i].toolName);	
 				r.rentPrice += inventory[i].price;
@@ -102,11 +115,18 @@ void Store::rentOut(int numDays, int numTools, std::string customerName)
 			}
 			i++;
 		}
+
+		r.rentLength = numDays;
+		r.customerName = customerName;
+		r.rentDay = CURRENT_DAY;  
+		r.activeRent = true;
+		r.numToolsRented = numTools;
+
+		moneyEarned += r.rentPrice;
+
+		rentList.push_back(r);
+
 	}
-
-	moneyEarned += r.rentPrice;
-
-	rentList.push_back(r);
 }
 
 void Store::printActiveRentals()
