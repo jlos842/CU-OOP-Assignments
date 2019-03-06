@@ -9,6 +9,8 @@ various methods used by Customers to rent tools
 #define RENTPATTERN_H
 
 #include <string>
+#include <tuple>
+#include <vector>
 
 class Store; //Forward Declaration
 
@@ -16,10 +18,12 @@ class RentPattern
 {
 	public:
 		virtual void rentTools(Store &toolstore) {};	
+		void returnTools();
 		int getMinToolsRented();
 	protected:
 		std::string customerName;	
 		int *numToolsPointer;
+		std::vector<std::tuple<int, int>> returnDates;
 		int minToolsRented;
 };
 

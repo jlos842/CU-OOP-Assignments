@@ -28,10 +28,12 @@ Customer::Customer(std::string name, int type)
 	};
 }
 
+/*
 Customer::~Customer()
 {
 	delete rentMethod;
 }
+*/
 
 std::string Customer::getCustomerName() {return customerName;}
 int Customer::getCustomerType() {return customerType;}
@@ -46,4 +48,9 @@ void Customer::decrementNumTools(int numToolsReturned)
 void Customer::rent(Store &toolstore)
 {
 	rentMethod->rentTools(toolstore);
+}
+
+void Customer::returnTools()
+{
+	rentMethod->returnTools();
 }

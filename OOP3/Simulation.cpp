@@ -12,6 +12,7 @@ Function definitions for the Simulation class
 #include <iostream>
 #include <string>
 
+/*
 Customer c1("Andrew", CASUAL); 
 Customer c2("Barbara", CASUAL);
 Customer c3("Charlie", CASUAL);
@@ -22,14 +23,15 @@ Customer c7("Greg", REGULAR);
 Customer c8("Holly", REGULAR);
 Customer c9("Ian", REGULAR);
 Customer c10("Jess", REGULAR);
+*/
 
-Customer customers[10] = {c1, c2, c3, c4, c5, c6, c7, c8, c9, c10};
+//Customer customers[10] = {c1, c2, c3, c4, c5, c6, c7, c8, c9, c10};
 
 Store store();
 
 int CURRENT_DAY;
 
-Simulation::Simulation() : simulatedStore(), customerList(customers)
+Simulation::Simulation() : simulatedStore()//, customerList(customers)
 {
 	CURRENT_DAY = 0;
 }

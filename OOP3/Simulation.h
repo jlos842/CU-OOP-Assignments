@@ -24,7 +24,7 @@ class Simulation
 		//void createReport(); //Create the final report
 	private:
 		Store simulatedStore;
-		Customer customerList[10];
+		//Customer customerList[10];
 };
 
 #endif

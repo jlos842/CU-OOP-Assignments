@@ -4,46 +4,55 @@
 #include "Tool.h"
 #include <iostream>
 #include <string>
+#include <cstdlib>
+#include <ctime>
 
 int main()
-{
+{	
+	Customer c1("Angela", 0);
+	Customer c2("Ben", 0);
+	Customer c3("Carrie", 0);
+	Customer c4("David", 1);
+	Customer c5("Estelle", 1);
+	Customer c6("Frank", 1);
+	Customer c7("Gabi", 2);
+	Customer c8("Harry", 2);
+	Customer c9("Irma", 2);
+	Customer c10("Joe", 2);
+
+	Customer customers[10] = {c1, c2, c3, c4, c5, c6, c7, c8, c9, c10};
+
 	Store toolstore;
-	Customer cust1("Joe", 1);
-	Customer cust4("Billy", 1);
-	Customer cust5("Charlie", 1);
-	Customer cust6("Mac", 1);
-	Customer cust7("Dennis", 1);
-	Customer cust8("Dee", 1);
-	Customer cust9("Frank", 1);
-	Customer cust10("Cricket", 2);
 
-	toolstore.storeShuffle();
+	srand(time(0));
+	int ran;
 
-	cust1.rent(toolstore);
-	cust4.rent(toolstore);
-	cust5.rent(toolstore);
-	cust6.rent(toolstore);
-	cust7.rent(toolstore);
-	cust8.rent(toolstore);
-	cust9.rent(toolstore);
-	cust10.rent(toolstore);
-	cust10.rent(toolstore);
-
-	toolstore.decrementRentDaysLeft();
-	toolstore.decrementRentDaysLeft();
-	toolstore.decrementRentDaysLeft();
-	toolstore.decrementRentDaysLeft();
-	toolstore.decrementRentDaysLeft();
-	toolstore.decrementRentDaysLeft();
-	toolstore.decrementRentDaysLeft();
-	toolstore.decrementRentDaysLeft();
-	toolstore.decrementRentDaysLeft();
-
-	std::cout << cust1.getNumberOfTools() << std::endl;
-	std::cout << cust4.getNumberOfTools() << std::endl;
-	std::cout << cust10.getNumberOfTools() << std::endl;
-
+	
+	for(int i=0; i < 35; i++)
+	{
+		CURRENT_DAY++;
+		toolstore.decrementRentDaysLeft();
+		for(int k=0; k<10; k++)
+		{
+			customers[k].returnTools();
+		}
+		for(int j=0; j<10; j++)
+		{	
+			ran = rand() % 3;	
+			if(ran == 0)
+			{
+				customers[j].rent(toolstore);
+			}
+		}
+		
+	}
+	std::cout << "========================\n" << "RESULTS\n" << "========================\n" << std::endl; 
+	std::cout << "MONEY EARNED: " << toolstore.getMoneyEarned() << std::endl;
+	std::cout << "STATUS OF TOOLS IN STORE: " << std::endl;
 	toolstore.printTools();
+	toolstore.printActiveRentals();
+	toolstore.printCompletedRentals();
 
-	return 0;
+
+	std::cout << "\n\nDONE\n\n";
 }

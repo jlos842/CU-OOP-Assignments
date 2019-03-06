@@ -14,26 +14,26 @@ Function definitions for the Tool store class
 #include <ctime>
 #include <vector>
 
-	Tool t1 = {"Paint Tool 1", "Painting", 0, 10};
-	Tool t2 = {"Paint Tool 2", "Painting", 0, 10};
-	Tool t3 = {"Paint Tool 3", "Painting", 0, 10};
-	Tool t4 = {"Paint Tool 4", "Painting", 0, 10};
-	Tool t5 = {"Concrete Tool 1", "Concrete", 0, 20};
-	Tool t6 = {"Concrete Tool 2", "Concrete", 0, 20};
-	Tool t7 = {"Concrete Tool 3", "Concrete", 0, 20};
-	Tool t8 = {"Concrete Tool 4", "Concrete", 0, 20};
-	Tool t9 = {"Plumbing Tool 1", "Plumbing", 0, 25};
-	Tool t10 = {"Plumbing Tool 2", "Plumbing", 0, 25};
-	Tool t11 = {"Plumbing Tool 3", "Plumbing", 0, 25};
-	Tool t12 = {"Plumbing Tool 4", "Plumbing", 0, 25};
-	Tool t13 = {"Woodwork Tool 1", "Woodwork", 0, 15};
-	Tool t14 = {"Woodwork Tool 2", "Woodwork", 0, 15};
-	Tool t15 = {"Woodwork Tool 3", "Woodwork", 0, 15};
-	Tool t16 = {"Woodwork Tool 4", "Woodwork", 0, 15};
-	Tool t17 = {"Yardwork Tool 1", "Yardwork", 0, 5};
-	Tool t18 = {"Yardwork Tool 2", "Yardwork", 0, 5};
-	Tool t19 = {"Yardwork Tool 3", "Yardwork", 0, 5};
-	Tool t20 = {"Yardwork Tool 4", "Yardwork", 0, 5};
+Tool t1 = {"Paint Tool 1", "Painting", 0, 10};
+Tool t2 = {"Paint Tool 2", "Painting", 0, 10};
+Tool t3 = {"Paint Tool 3", "Painting", 0, 10};
+Tool t4 = {"Paint Tool 4", "Painting", 0, 10};
+Tool t5 = {"Concrete Tool 1", "Concrete", 0, 20};
+Tool t6 = {"Concrete Tool 2", "Concrete", 0, 20};
+Tool t7 = {"Concrete Tool 3", "Concrete", 0, 20};
+Tool t8 = {"Concrete Tool 4", "Concrete", 0, 20};
+Tool t9 = {"Plumbing Tool 1", "Plumbing", 0, 25};
+Tool t10 = {"Plumbing Tool 2", "Plumbing", 0, 25};
+Tool t11 = {"Plumbing Tool 3", "Plumbing", 0, 25};
+Tool t12 = {"Plumbing Tool 4", "Plumbing", 0, 25};
+Tool t13 = {"Woodwork Tool 1", "Woodwork", 0, 15};
+Tool t14 = {"Woodwork Tool 2", "Woodwork", 0, 15};
+Tool t15 = {"Woodwork Tool 3", "Woodwork", 0, 15};
+Tool t16 = {"Woodwork Tool 4", "Woodwork", 0, 15};
+Tool t17 = {"Yardwork Tool 1", "Yardwork", 0, 5};
+Tool t18 = {"Yardwork Tool 2", "Yardwork", 0, 5};
+Tool t19 = {"Yardwork Tool 3", "Yardwork", 0, 5};
+Tool t20 = {"Yardwork Tool 4", "Yardwork", 0, 5};
 
 Tool toolarray[20] = {t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15, t16, t17, t18, t19, t20};
 
@@ -85,7 +85,6 @@ void Store::decrementRentDaysLeft()
 		if(rentList[i].rentDay + rentList[i].rentLength == CURRENT_DAY)
 		{
 			rentList[i].activeRent = false;
-
 		}
 	}
 }

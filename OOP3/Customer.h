@@ -24,11 +24,12 @@ class Customer
 {
 	public:		
 		Customer(std::string name, int type);
-		~Customer();
+		//~Customer();
 		std::string getCustomerName();
 		int getCustomerType();	
 		int getNumberOfTools();
 		void rent(Store &toolstore);
+		void returnTools();
 		void decrementNumTools(int numToolsReturned);
 		int getMinToolsRented();
 	private:	
