@@ -1,0 +1,4 @@
+#ignore generated gch files
+*.gch
+#ignore the a.out
+a.out
