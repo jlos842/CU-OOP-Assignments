@@ -37,6 +37,7 @@ Tool t20 = {"Yardwork Tool 4", "Yardwork", 0, 5};
 
 Tool toolarray[20] = {t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15, t16, t17, t18, t19, t20};
 
+
 Store::Store() : moneyEarned(0), toolsAvailable(20), inventory(toolarray)
 {
 }
@@ -62,7 +63,6 @@ void Store::printTools()
 
 void Store::storeShuffle()
 {
-	srand(time(0));
 	std::random_shuffle(&inventory[0], &inventory[19]);
 }
 
@@ -91,9 +91,10 @@ void Store::decrementRentDaysLeft()
 
 void Store::rentOut(int numDays, int numTools, std::string customerName)
 {
-	std::cout << customerName << " attempting to rent " << numTools << " tools for " << numDays << " day(s)."  << std::endl;
+	//DEBUGGING 
+	//std::cout << customerName << " attempting to rent " << numTools << " tools for " << numDays << " day(s)."  << std::endl;
 	
-	std::cout << "tools available to rent: " << toolsAvailable << std::endl;
+	//std::cout << "tools available to rent: " << toolsAvailable << std::endl;
 	if(toolsAvailable >= numTools)
 	{
 		toolsAvailable -= numTools;

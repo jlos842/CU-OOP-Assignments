@@ -36,7 +36,7 @@ CasualPattern::CasualPattern(std::string name, int *numTools)
 
 void CasualPattern::rentTools(Store &toolstore)
 {
-	srand(time(0));
+	//srand(time(0));
 	int r1 = rand();
 	int r2 = rand();
 
@@ -99,7 +99,7 @@ RegularPattern::RegularPattern(std::string name, int *numTools)
 
 void RegularPattern::rentTools(Store &toolstore)
 {	
-	srand(time(0));
+	//srand(time(0));
 	int r1 = rand();
 	int r2 = rand();
 

@@ -7,6 +7,7 @@
 #include <cstdlib>
 #include <ctime>
 
+
 int main()
 {	
 	Customer c1("Angela", 0);
@@ -25,12 +26,12 @@ int main()
 	Store toolstore;
 
 	srand(time(0));
-	int ran;
+	int ran;	
 
-	
 	for(int i=0; i < 35; i++)
-	{
+	{	
 		CURRENT_DAY++;
+		toolstore.storeShuffle();
 		toolstore.decrementRentDaysLeft();
 		for(int k=0; k<10; k++)
 		{
@@ -39,15 +40,18 @@ int main()
 		for(int j=0; j<10; j++)
 		{	
 			ran = rand() % 3;	
+			std::cout << customers[j].getCustomerName() << " ROLLED A: " << ran << std::endl;
 			if(ran == 0)
 			{
 				customers[j].rent(toolstore);
 			}
 		}
-		
+		std::cout << "-------------------" << std::endl;
 	}
+
+	std::cout << "\n\n\n\n";
 	std::cout << "========================\n" << "RESULTS\n" << "========================\n" << std::endl; 
-	std::cout << "MONEY EARNED: " << toolstore.getMoneyEarned() << std::endl;
+	std::cout << "MONEY EARNED: " << toolstore.getMoneyEarned() << "$" << std::endl;
 	std::cout << "STATUS OF TOOLS IN STORE: " << std::endl;
 	toolstore.printTools();
 	toolstore.printActiveRentals();
