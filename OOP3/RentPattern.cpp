@@ -13,9 +13,6 @@ Definitions file for the rentPattern class and it's subclasses
 #include <vector>
 #include <tuple>
 
-
-int RentPattern::getMinToolsRented(){return minToolsRented;}
-
 void RentPattern::returnTools()
 {
 	for(int i = 0; i < returnDates.size(); i++)
@@ -31,12 +28,10 @@ CasualPattern::CasualPattern(std::string name, int *numTools)
 {
 	numToolsPointer = numTools;
 	customerName = name;	
-	minToolsRented = 1;
 }
 
 void CasualPattern::rentTools(Store &toolstore)
 {
-	//srand(time(0));
 	int r1 = rand();
 	int r2 = rand();
 
@@ -69,7 +64,6 @@ BusinessPattern::BusinessPattern(std::string name, int *numTools)
 {
 	numToolsPointer = numTools;
 	customerName = name;	
-	minToolsRented = 3;
 }
 
 void BusinessPattern::rentTools(Store &toolstore)
@@ -94,12 +88,10 @@ RegularPattern::RegularPattern(std::string name, int *numTools)
 {
 	numToolsPointer = numTools;
 	customerName = name;	
-	minToolsRented = 1;
 }
 
 void RegularPattern::rentTools(Store &toolstore)
 {	
-	//srand(time(0));
 	int r1 = rand();
 	int r2 = rand();
 

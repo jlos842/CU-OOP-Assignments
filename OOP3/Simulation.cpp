@@ -1,16 +1,7 @@
 /*
 Josef Los
 
-Function definitions for the Simulation class
+Global Variable for current day. That's it
 */
 
-#include "Simulation.h"
-#include "Customer.h"
-#include "Store.h"
-#include <cstdlib>
-#include <ctime>
-#include <iostream>
-#include <string>
-
 int CURRENT_DAY = 0;
-

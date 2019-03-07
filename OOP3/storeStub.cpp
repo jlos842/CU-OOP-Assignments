@@ -1,3 +1,8 @@
+/* Josef Los
+
+This is the main file that runs the simulation. It instanciates the the store
+and customer objects and uses them to run the simulation. 
+*/
 #include "Simulation.h"
 #include "Customer.h"
 #include "Store.h"
@@ -10,6 +15,8 @@
 
 int main()
 {	
+	int NUM_DAYS = 35;
+
 	Customer c1("Angela", 0);
 	Customer c2("Ben", 0);
 	Customer c3("Carrie", 0);
@@ -28,7 +35,7 @@ int main()
 	srand(time(0));
 	int ran;	
 
-	for(int i=0; i < 35; i++)
+	for(int i=0; i < NUM_DAYS; i++)
 	{	
 		CURRENT_DAY++;
 		toolstore.storeShuffle();
@@ -40,23 +47,14 @@ int main()
 		for(int j=0; j<10; j++)
 		{	
 			ran = rand() % 3;	
-			std::cout << customers[j].getCustomerName() << " ROLLED A: " << ran << std::endl;
 			if(ran == 0)
 			{
 				customers[j].rent(toolstore);
 			}
 		}
-		std::cout << "-------------------" << std::endl;
 	}
 
-	std::cout << "\n\n\n\n";
-	std::cout << "========================\n" << "RESULTS\n" << "========================\n" << std::endl; 
-	std::cout << "MONEY EARNED: " << toolstore.getMoneyEarned() << "$" << std::endl;
-	std::cout << "STATUS OF TOOLS IN STORE: " << std::endl;
-	toolstore.printTools();
-	toolstore.printActiveRentals();
-	toolstore.printCompletedRentals();
+	toolstore.printReport();
 
-
-	std::cout << "\n\nDONE\n\n";
+	return 0;
 }

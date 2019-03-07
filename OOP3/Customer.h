@@ -1,7 +1,10 @@
 /*
 Josef Los
 
-Header file for the Customer class
+Header file for the Customer class. Each instance of the customer class 
+represents a single customer. Each customer has a name and a type. Each
+customer has a RentPattern object depending on their type which handles
+the act of formatting a request to the store to rent tools. 
 */
 
 #ifndef CUSTOMER_H
@@ -19,19 +22,16 @@ typedef enum
 	REGULAR	
 } CustomerTypes;
 
-
 class Customer
 {
 	public:		
 		Customer(std::string name, int type);
-		//~Customer();
 		std::string getCustomerName();
 		int getCustomerType();	
 		int getNumberOfTools();
 		void rent(Store &toolstore);
 		void returnTools();
 		void decrementNumTools(int numToolsReturned);
-		int getMinToolsRented();
 	private:	
 		int numTools;
 		int *numToolsPointer;

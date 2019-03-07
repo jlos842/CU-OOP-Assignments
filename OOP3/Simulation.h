@@ -1,6 +1,7 @@
 /*
 Josef Los
 
+Just a variable to hold the current day
 */
 
 #ifndef SIMULATION_H

@@ -2,7 +2,9 @@
 Josef Los
 
 Header file for the store class. The store manages a list of Tools as well
-as a vector of Rental objects.
+as a vector of Rental objects. It's also in charge of renting tools out to
+customers and keeping track of data about the store such as money earned 
+and the tools available. Lastly, the store generates the final report
 */
 
 #ifndef STORE_H
@@ -24,11 +26,10 @@ class Store
 		void printTools();
 		void storeShuffle(); 
 		void rentOut(int numDays, int numTools, std::string customerName);
-		void printActiveRentals();
-		void printCompletedRentals();
+		void printRentals(bool active);
 		void decrementRentDaysLeft();
 		int getRentListSize();
-		Rental* getRental(int position);
+		void printReport();
 	private:
 		int moneyEarned, toolsAvailable;
 		Tool inventory[20];

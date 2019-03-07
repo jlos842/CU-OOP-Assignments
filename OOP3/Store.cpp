@@ -37,7 +37,6 @@ Tool t20 = {"Yardwork Tool 4", "Yardwork", 0, 5};
 
 Tool toolarray[20] = {t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15, t16, t17, t18, t19, t20};
 
-
 Store::Store() : moneyEarned(0), toolsAvailable(20), inventory(toolarray)
 {
 }
@@ -45,7 +44,7 @@ Store::Store() : moneyEarned(0), toolsAvailable(20), inventory(toolarray)
 int Store::getMoneyEarned() {return moneyEarned;}
 int Store::getToolsAvailable() {return toolsAvailable;}
 int Store::getRentListSize() {return rentList.size();}
-Rental* Store::getRental(int position) {return &rentList[position];}
+
 void Store::printTools()
 {
 	for(int i = 0; i < 20; i++)
@@ -90,11 +89,7 @@ void Store::decrementRentDaysLeft()
 }
 
 void Store::rentOut(int numDays, int numTools, std::string customerName)
-{
-	//DEBUGGING 
-	//std::cout << customerName << " attempting to rent " << numTools << " tools for " << numDays << " day(s)."  << std::endl;
-	
-	//std::cout << "tools available to rent: " << toolsAvailable << std::endl;
+{	
 	if(toolsAvailable >= numTools)
 	{
 		toolsAvailable -= numTools;
@@ -129,14 +124,24 @@ void Store::rentOut(int numDays, int numTools, std::string customerName)
 	}
 }
 
-void Store::printActiveRentals()
+void Store::printRentals(bool active)
 {
 	std::string rentalTools;
-	std::string formatLine = "---------------------------------------------------";
-	std::cout << "\nACTIVE RENTALS\n\n" <<formatLine << std::endl;
+	std::string formatLine = "--------------------------------------------------------------";
+	bool printActive;
+	if(active)
+	{	
+		std::cout << "\nACTIVE RENTALS\n\n" <<formatLine << std::endl;
+		printActive = true;
+	}
+	else
+	{	
+		std::cout << "\nCOMPLETED RENTALS\n\n" <<formatLine << std::endl;
+		printActive = false;
+	}
 	for(int i=0; i < rentList.size(); i++)
 	{
-		if(rentList[i].activeRent)
+		if(rentList[i].activeRent == printActive)
 		{
 			rentalTools = "";
 			for(int j=0; j < rentList[i].toolsRented.size(); j++)
@@ -150,29 +155,16 @@ void Store::printActiveRentals()
 			std::cout << "DAY "  << rentList[i].rentDay << "\nCustomer: " << rentList[i].customerName << "\nTool(s): " << rentalTools << "\nLength: " << rentList[i].rentLength << " days\nProfit: " << rentList[i].rentPrice << "$\n" << formatLine << std::endl;	
 		}
 	}
-
 }
 
-void Store::printCompletedRentals()
+void Store::printReport()
 {
-	std::string rentalTools;
-	std::string formatLine = "---------------------------------------------------";
-	std::cout << "\nCOMPLETED RENTALS\n\n" <<formatLine << std::endl;
-	for(int i=0; i < rentList.size(); i++)
-	{
-		if(!rentList[i].activeRent)
-		{
-			rentalTools = "";
-			for(int j=0; j < rentList[i].toolsRented.size(); j++)
-			{
-				rentalTools.append(rentList[i].toolsRented[j]);
-				if((j+1) != rentList[i].toolsRented.size())
-				{
-					rentalTools.append(", ");
-				}
-			}
-			std::cout << "DAY "  << rentList[i].rentDay << "\nCustomer: " << rentList[i].customerName << "\nTool(s): " << rentalTools << "\nLength: " << rentList[i].rentLength << " days\nProfit: " << rentList[i].rentPrice << "$\n" << formatLine << std::endl;	
-		}
-	}
+	std::cout << "========================\n" << "RESULTS\n" << "========================\n" << std::endl; 
+	std::cout << "MONEY EARNED: " << moneyEarned << "$" << std::endl;
+	std::cout << "STATUS OF TOOLS IN STORE: " << std::endl;
+	this->printTools();
+	this->printRentals(true);
+	this->printRentals(false);
 
+	std::cout << "\n\nDONE\n\n";
 }

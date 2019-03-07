@@ -2,7 +2,10 @@
 Josef Los
 
 Header file for the RentPattern class. This is the class that'll contain the
-various methods used by Customers to rent tools
+various methods used by Customers to rent tools. Each customer will have their
+own RentPattern. The rentpattern also keeps track of when to 'return' the tools
+to the store, so the customer can rent more. The RentPattern object is an example
+of the strategy pattern.
 */
 
 #ifndef RENTPATTERN_H
@@ -19,12 +22,10 @@ class RentPattern
 	public:
 		virtual void rentTools(Store &toolstore) {};	
 		void returnTools();
-		int getMinToolsRented();
 	protected:
 		std::string customerName;	
 		int *numToolsPointer;
 		std::vector<std::tuple<int, int>> returnDates;
-		int minToolsRented;
 };
 
 class CasualPattern : public RentPattern
