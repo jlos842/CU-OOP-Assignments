@@ -1,8 +1,15 @@
 Josef Los
-3/1/19
 Object Oriented Design Homework 3
 Dr. Montgomery
 
 --------------------------------------
 
+This is a C++ 11 program compiled with g++. To compile the code type the following in the command line:
+> make 
 
+Then to run the simulation type 
+> ./runsim
+
+Lastly to clean the directory type
+
+> make clean
