@@ -102,7 +102,7 @@ void Store::rentOut(int numDays, int numTools, std::string customerName)
 			if(inventory[i].rentDaysLeft == 0)
 			{
 				r.toolsRented.push_back(inventory[i].toolName);	
-				r.rentPrice += inventory[i].price;
+				r.rentPrice += (inventory[i].price * numDays);
 
 				inventory[i].rentDaysLeft = numDays;
 				numTools--;

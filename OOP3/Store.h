@@ -24,10 +24,10 @@ class Store
 		int getMoneyEarned();
 		int getToolsAvailable();	
 		void printTools();
-		void storeShuffle(); 
-		void rentOut(int numDays, int numTools, std::string customerName);
+		void storeShuffle(); //Helper function. Randomizes locations of tools in store
+		void rentOut(int numDays, int numTools, std::string customerName); //Rents tools out to customers and creates a Rental object for rentList
 		void printRentals(bool active);
-		void decrementRentDaysLeft();
+		void decrementRentDaysLeft(); //Ran at the beginning of each day. Decrements the days a rental is out
 		int getRentListSize();
 		void printReport();
 	private:
